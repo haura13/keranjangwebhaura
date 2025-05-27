@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.Shark_Food Shop</title>
+</head>
+<style>
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+
+
+    }
+
+    .product-card {
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 5px;
+      background-color: white;
+      box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      position: relative;
+      
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .cart-card {
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 5px;
+        background-color: white;
+        box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.1);
+        text-align: left;
+        width: 300px;
+    }
+    
+    .cart-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+
+    body { 
+        font-family: Arial, sans-serif; 
+        margin: 0; 
+        padding: 0; 
+        background: #ffe6eb; 
+    }
+    header { 
+        background: #f57396; 
+        padding: 20px; 
+        text-align: center; 
+        color: white; 
+    }
+    nav {
+        background: #ffb6c1; 
+        padding: 10px; 
+        text-align: center; 
+    }
+    nav a { 
+        color: white; 
+        margin: 0 15px; 
+        text-decoration:none; 
+        font-weight: bold; 
+        cursor: pointer; 
+    }
+    .logo { 
+        text-align: center; 
+        padding: 100px 20px; 
+        background: #ffd6de; 
+    }
+    .logo img { 
+        width: 300px; 
+        animation: pop 1.5s ease-in-out infinite alternate; 
+    }
+     @keyframes pop {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+    .deskripsi {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px; 
+        color : black;
+        font-weight: bold;
+    }
+    .section { 
+        padding: 40px 20px; 
+        text-align: center; 
+    }
+    .testimoni-list{ 
+        display: flex; 
+        flex-wrap: wrap; 
+        justify-content: center; 
+        gap: 20px; 
+    }
+    .card { 
+        background: white; 
+        border-radius: 10px; 
+        padding: 50px; 
+        width: 200px; 
+        box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+        transition: transform 0.3s; 
+    }
+    .card:hover {
+        transform: translateY(-5px); 
+    }
+    .btn {
+        background: #f57396; 
+        color: white; 
+        border: none; 
+        padding: 10px 20px; 
+        border-radius: 5px; 
+        cursor: pointer; 
+    }
+    #contact { 
+        background: #f5f5f5; 
+        padding: 40px 20px; 
+        color: #333; 
+        }
+</style>
+<body>
+     <header>
+        <h1>SSHARK FOOD SHOP</h1>
+        <p>Selamat datang di SShark_Food Shop, pusat camilan lezat dan kreatif yang menawarkan towel cake roll makanan serta kripca renyah!</p>
+    </header>
+    <nav>
+    <a onclick="scrollToSection('home')">Beranda</a>
+    <a onclick="scrollToSection('services')">Layanan</a>
+    <a onclick="scrollToSection('Daftar-menu')">Produk</a>
+    <a onclick="scrollToSection('contact')">Kontak</a>
+    </nav> 
+    <div id="home" class="logo">
+    <img src="logo.jpg" alt="Cupcake">
+    <h2>Produk Lezat Kami</h2>
+    <p  class="deskripsi">Towel Cake Roll (Makanan): Kami menghadirkan towel cake roll yang tidak hanya unik dari segi tampilan, tapi juga lezat untuk dinikmati. Dibuat dengan bahan berkualitas dan rasa yang memanjakan lidah, cocok untuk berbagai acara spesial, seperti ulang tahun, hampers, atau hadiah unik.
+        Kripca: Temukan camilan khas kami, kripca yang renyah dan gurih. Tersedia dalam berbagai rasa, mulai dari original hingga rasa modern yang cocok untuk semua selera.
+Di S.Shark_food, kami menggabungkan kreativitas dan rasa untuk memberikan pengalaman terbaik bagi pelanggan. Cocok untuk Anda yang mencari hadiah unik atau camilan nikmat. Temukan produk kami di Shopee, Twitter, Tiktok, Instagram dan jadikan hari Anda lebih spesial bersama kami!</p>
+    <button class="btn" onclick="scrollToSection('Daftar-menu')">Lihat Produk</button>
+  </div> 
+
+    <div id="services" class="section">
+    <h2>Layanan</h2>
+    <div class="testimoni-list">
+        <div class="card">Testimoni TowelCake Roll
+            <img src="TestimoniTowel.jpg" alt="testimoni towel" style="width:100%; border-radius:10px;">
+        </div>
+        <div class="card">Testimoni Kripca
+            <img src="testimoniKripca.jpg" alt="Testimoni Kripca" style="width:100%;height: 457px; border-radius:10px;">
+        </div>
+    </div>
+    </div>
+
+    <div id="Daftar-menu" class="section">
+        <h2>Daftar Produk</h2>
+        <div class="products" id="product-list"></div>
+    </div>
+
+    <div id="cart-item" class="section"></div>
+
+    <div id="contact" class="section">
+    <h2>Kontak</h2>
+    <p>Alamat: Cikampek</p>
+    <p>Telp: 0858-9137-1159</p>
+    <p>Email: zearaaqila@gmail.com</p>
+    <p>Twitter : S.Shark_Food</p>
+    <p>instagram: S.Shark_Food </p>
+</div>
+
+
+    <script>
+        const product = [
+            {
+                id: "1",
+                name: "TOWEL CAKE  MANGGA",
+                image: "Towelmangga.jpg",
+                price : 13000
+            },
+            {
+                id: "2",
+                name: "TOWEL CAKE STRAWBERRY",
+                image: "TowelStrawberry.jpg",
+                price : 13000
+            },
+            {
+                id: "3",
+                name: "TOWEL CAKE  DURIAN",
+                image: "TowelDurian.jpg",
+                price : 18000
+            },
+            {
+                id: "4",
+                name: "KRIPCA ORIGINAL",
+                image: "KripcaOri.jpg",
+                price : 5000
+            },
+            {
+                id: "5",
+                name: "KRIPCA  PEDAS",
+                image: "KripcaPedes.jpg",
+                price : 5000
+                
+            },
+        ];
+
+         const productlist = document.getElementById("product-list");
+         
+         product.forEach(function (product) {
+            const divCard = document.createElement("div");
+            divCard.className = "product-card";
+            divCard.innerHTML = `
+        <img src="${product.image}" alt="${product.name}" />
+        <h2 class="font-semibold">${product.name}</h2>
+        <p class="font-semibold">Harga: Rp. ${product.price}</p>
+        <a class="btn" href="https://wa.me/6285891371159?text=${encodeURIComponent('Halo! Saya mau beli produk ' + product.name )}"target="_blank">Beli Sekarang</a>
+        <button class="btn" onclick="tambahkeranjang('${product.id}')">Tambah Ke Keranjang</button>`;
+        
+        productlist.appendChild(divCard);
+    });
+
+    function scrollToSection(id) {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    const cart = [];
+
+    function tambahkeranjang(id){
+        let produk_yg_dipilih = product.find(product => product.id == id);
+
+        let produk = {
+            id : produk_yg_dipilih.id,
+            name :produk_yg_dipilih.name,
+            price : produk_yg_dipilih.price,
+            quantity : 1
+        }
+
+        let produk_ada = cart.find (cart => cart.id == id);
+        if (produk_ada){
+            produk_ada.quantity += 1;
+        } else{
+            cart.push (produk);
+        }
+
+        let cart_items = document.getElementById ("cart-item");
+        cart_items.innerHTML= "<h2>Keranjang Belanja</h2><div class='cart-container' id='cart-container'></div>";
+
+        const container = document.getElementById("cart-container");
+
+        cart.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "cart-card";
+            div.innerHTML = `<div>
+                <div><b> ${item.name}</b> <p> Rp.${item.price.toLocaleString()} x ${item.quantity} pcs </p>
+                    <p>Total : Rp.${(item.price * item.quantity).toLocaleString()}</p>
+                    </div>
+                </div>`;
+
+                container.appendChild(div);
+        });
+
+        const buttonCheckout = document.createElement("button");
+        buttonCheckout.className = "btn"
+        buttonCheckout.textContent = "Checkout via wa";
+        buttonCheckout.onclick = checkoutKeWa ;
+        cart_items.appendChild(buttonCheckout)
+
+        function checkoutKeWa(){
+            let pesan = "Halo! Saya ingin memesan:\n";
+            cart.forEach(item => {
+                pesan += `- ${item.name} x ${item.quantity} pcs (Rp.${(item.price * item.quantity).toLocaleString()})\n`
+            });
+            
+            let totalHarga = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            pesan += `\nTotal: Rp.${totalHarga.toLocaleString()}`;
+            let waLink = `https://wa.me/6285891371159?text=${encodeURIComponent(pesan)}`;
+             window.open(waLink, "_blank");
+            }
+    }
+
+    </script>
+</body>
+</html>
